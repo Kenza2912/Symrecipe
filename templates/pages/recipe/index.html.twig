@@ -13,7 +13,7 @@
 
         <h1>Mes recettes</h1>
 
-        <a href="" class="btn btn-primary">
+        <a href="{{ path('recipe.new')}}" class="btn btn-primary">
             Créer une recette
         </a>
 
@@ -43,10 +43,10 @@
                         <td>{{ recipe.difficulty ? recipe.difficulty : 'Non renseigné' }}</td>
                         <td>{{ recipe.createdAt|date('d/m/Y') }}</td>
                         <td>
-                            <a href="" class="btn btn-info">Modifier</a>
+                            <a href="{{ path('recipe.edit', { id: recipe.id }) }}" class="btn btn-info">Modifier</a>
                         </td>
                         <td>
-                            <a href="" class="btn btn-warning">Supprimer</a>
+                            <a href="{{ path('recipe.delete', { id: recipe.id }) }}" class="btn btn-warning">Supprimer</a>
                         </td>
                     </tr>
                 {% endfor %}
