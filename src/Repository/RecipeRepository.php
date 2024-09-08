@@ -31,6 +31,26 @@ class RecipeRepository extends ServiceEntityRepository
     //        ;
     //    }
 
+
+        public function findPublicRecipe(?int $nbRecipes): array
+        {
+            sleep(3);
+            $queryBuilder = $this->createQueryBuilder('r')
+                ->where('r.isPublic = 1')
+                ->orderBy('r.createdAt', 'DESC');
+
+
+            if ($nbRecipes !== 0 || $nbRecipes !== null) {
+                $queryBuilder->setMaxResults($nbRecipes);
+            }
+
+            return $queryBuilder->getQuery()
+                ->getResult();
+        }
+    
+
+
+
     //    public function findOneBySomeField($value): ?Recipe
     //    {
     //        return $this->createQueryBuilder('r')
