@@ -65,6 +65,11 @@
     </div>
      {% else %}
 			<h4>Il n'y a pas d'ingrédients</h4>
+
+      <a href="{{ path('ingredient.new') }}" class="btn btn-primary">
+				Créer un ingrédient
+			</a>
+
     {% endif %}
    
 </div>

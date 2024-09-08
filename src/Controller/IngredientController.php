@@ -12,6 +12,7 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Attribute\Route;
 
 
+use Symfony\Component\Security\Http\Attribute\IsGranted;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
 class IngredientController extends AbstractController
@@ -37,7 +38,7 @@ class IngredientController extends AbstractController
 
 
     #[IsGranted('ROLE_USER')]
-    #[Route('/ingredient/nouveau', name: 'ingredient.new')]
+    #[Route('/ingredient/creation', name: 'ingredient.new')]
     public function new(Request $request, EntityManagerInterface $manager): Response
     {
 
@@ -70,6 +71,8 @@ class IngredientController extends AbstractController
     #[Route('/ingredient/edition/{id}', name: 'ingredient.edit')]
     public function edit(Ingredient $ingredient,Request $request,EntityManagerInterface $manager ): Response
      {
+
+        
         $form = $this->createForm(IngredienType::class, $ingredient);
         $form->handleRequest($request);
 
